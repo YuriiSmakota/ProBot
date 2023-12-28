@@ -4,7 +4,7 @@ import asyncio
 from aiogram import Dispatcher, Bot
 from settings import config
 
-from heandlers import command_start
+from heandlers import command_start, invite_query
 
 
 async def main():
@@ -15,6 +15,7 @@ async def main():
     dp = Dispatcher()
 
     dp.include_router(command_start.router)
+    dp.include_router(invite_query.router)
 
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
